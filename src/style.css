@@ -24,3 +24,5 @@ main{background-color:#f5f8fc;background-image:radial-gradient(ellipse at 50% 45
 .edit-modal{width:960px}.edit-modal-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;padding-top:8px}.edit-column{min-width:0}.edit-column h3{margin:0 0 18px;color:#29495e;font-size:14px}.edit-column>label{display:block;font-size:12px;color:#526b82;margin:8px 0 16px}.edit-effects-column{border-left:1px solid #dce5ed;padding-left:24px}.edit-effects-column .effects{padding:12px 0 8px}.edit-effects-column .form-error{margin:8px 0 12px}.edit-modal .connections{display:none}@media(max-width:760px){.edit-modal{width:100%;max-height:92dvh;padding:18px}.edit-modal-grid{grid-template-columns:1fr;gap:16px}.edit-effects-column{border-left:0;border-top:1px solid #dce5ed;padding:18px 0 0}.edit-modal-actions{gap:8px}.edit-modal-actions .delete-button{padding:9px 8px;font-size:11px}}
 
 .modal-shade:not(.edit-shade){z-index:40}
+
+.edge-hit{fill:none;stroke:transparent;stroke-width:16;pointer-events:stroke;cursor:context-menu}
