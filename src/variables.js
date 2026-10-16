@@ -14,3 +14,10 @@ export function validateVariables(data){
  return {...data,variables:vars,nodes:data.nodes.map(n=>{const effects=(n.effects||[]).slice(0,1);return effects.length&&vars.find(v=>v.id===effects[0].variableId)?.type==='number'?{...n,effects:[{...effects[0],op:'add'}]}:effects.length>1?{...n,effects}:n;})};
 }
 
+export function validateResources(data){
+ const resources=data.resources??[];if(!Array.isArray(resources)||new Set(resources.map(r=>r.id)).size!==resources.length)throw Error();
+ for(const r of resources)if(typeof r.id!=='string'||typeof r.name!=='string'||!Number.isFinite(r.amount)||r.amount<0)throw Error();
+ for(const n of data.nodes){const cost=n.resourceCost;if(cost!==undefined&&cost!==null){if(typeof cost.resourceId!=='string'||!resources.some(r=>r.id===cost.resourceId)||!Number.isFinite(cost.amount)||cost.amount<=0)throw Error();}}
+ return {...data,resources};
+}
+
