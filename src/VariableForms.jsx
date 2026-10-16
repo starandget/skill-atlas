@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {Plus,X,Trash2} from 'lucide-react';
 import {calculate,operations} from './variables';
-const format=v=>typeof v==='boolean'?String(v):Number.isFinite(v)?String(Number(v.toPrecision(10))):'数值超出范围';
+const format=v=>typeof v==='boolean'?String(v):Number.isFinite(v)?`${Number(v.toPrecision(10))}%`:'数值超出范围';
 export function VariableManager({data,setData,onClose}){
  const [name,setName]=useState(''),[type,setType]=useState('number'),[base,setBase]=useState('0'),[error,setError]=useState('');
  function create(e){e.preventDefault();const title=name.trim();if(!title){setError('请输入变量名称');return;}if(data.variables.some(v=>v.name===title)){setError('变量名称已存在');return;}if(type==='number'&&(base.trim()===''||!Number.isFinite(Number(base)))){setError('请输入有效的基准数值');return;}setData(d=>({...d,variables:[...d.variables,{id:crypto.randomUUID(),name:title,type,base:type==='boolean'?base==='true':Number(base)}]}));setName('');setBase(type==='boolean'?'false':'0');setError('');}
